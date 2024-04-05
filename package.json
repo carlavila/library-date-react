@@ -30,9 +30,10 @@
     "@storybook/react": "^7.6.6",
     "@storybook/react-vite": "^7.6.6",
     "@storybook/test": "^7.6.6",
-    "@testing-library/react": "^14.1.2",
-    "@types/jest": "^29.5.11",
+    "@testing-library/react": "^14.2.1",
+    "@types/jest": "^29.5.12",
     "@types/react": "^18.2.45",
+    "@types/testing-library__react": "^10.2.0",
     "babel-jest": "^29.7.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
@@ -43,7 +44,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "storybook": "^7.6.6",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "peerDependencies": {
     "react": "^18.2.0",

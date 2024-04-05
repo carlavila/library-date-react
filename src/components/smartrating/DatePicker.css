@@ -1,0 +1,98 @@
+/* DatePicker.css */
+
+/* Style du conteneur du sélecteur de date */
+.date-picker {
+  font-family: Arial, sans-serif;
+  width: 250px;
+}
+
+/* Style de l'élément d'entrée de date */
+.date-picker input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  border:none;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+}
+
+/* Style lorsque la souris survole l'élément d'entrée de date */
+.date-picker input[type="date"]:hover {
+  border-color: #999;
+}
+
+/* Style lorsque l'élément d'entrée de date est en focus */
+.date-picker input[type="date"]:focus {
+  outline: none;
+  border-color: #e3e3e3;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Style du calendrier */
+.date-picker input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #fff;
+  border: none;
+  padding: 0.5em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Style des jours dans le calendrier */
+.date-picker input[type="date"]::-webkit-calendar-date {
+  color: rgb(150, 150, 150); /* Couleur du texte des jours */
+  font-weight: bold; /* Texte en gras pour les jours */
+  font-size: 14px; /* Taille de police des jours */
+}
+
+/* Style pour la partie du calendrier qui s'affiche lors du clic */
+.date-picker input[type="date"]::-webkit-calendar-picker-popup {
+  background-color: #fff; /* Couleur de fond */
+  border: 1px solid #ccc; /* Bordure */
+  border-radius: 4px; /* Bordure arrondie */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+  padding: 10px; /* Espacement interne */
+}
+
+
+.custom-date::-webkit-datetime-edit {
+  padding: 4em;
+}
+.custom-date::-webkit-datetime-edit-fields-wrapper {
+  background: blue;
+}
+.custom-date::-webkit-datetime-edit-text {
+  padding: 0 0.5em;
+}
+
+
+.custom-date::-webkit-datetime-edit {
+  background: blue;
+}
+
+.custom-date::-webkit-datetime-edit-fields-wrapper {
+  background: blue;
+}
+
+.custom-date::-webkit-datetime-edit-text {
+  background: blue;
+}
+
+.custom-date::-webkit-datetime-edit-month-field {
+  background: blue;
+}
+
+.custom-date::-webkit-datetime-edit-day-field {
+  background: blue;
+}
+
+.custom-date::-webkit-datetime-edit-year-field {
+  background: blue;
+}
+
+.custom-date::-webkit-inner-spin-button {
+  background: blue;
+}
+
+.custom-date::-webkit-calendar-picker-indicator{
+  background: blue;
+}
