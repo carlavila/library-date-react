@@ -1,7 +1,7 @@
 // DatePicker.stories.tsx
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
-import DatePicker from "./DatePicker";
+import {DatePicker} from "./DatePicker";
 
 export default {
   title: "ReactComponentLibrary/DatePicker",
