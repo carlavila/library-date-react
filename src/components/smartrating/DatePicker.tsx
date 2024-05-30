@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdExpandMore } from "react-icons/md";
 import { FaCalendar } from "react-icons/fa";
 import { DatePickerProps } from "./DatePicker.types";
 import "./DatePicker.css";
@@ -7,10 +7,9 @@ import "./DatePicker.css";
 const DatePicker: React.FC<DatePickerProps> = ({ onSelectDate }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [showCalendar, setShowCalendar] = useState(false);
-  const [previousSelectedDate, setPreviousSelectedDate] = useState<Date | null>(
-    null
-  );
+  const [previousSelectedDate, setPreviousSelectedDate] = useState<Date | null>(null);
   const [highlightedDate, setHighlightedDate] = useState<Date | null>(null);
+  const [showYearPopup, setShowYearPopup] = useState(false);
 
   // Ref pour stocker la référence du calendrier
   const calendarRef = useRef<HTMLDivElement>(null);
@@ -64,7 +63,12 @@ const DatePicker: React.FC<DatePickerProps> = ({ onSelectDate }) => {
     newDate.setMonth(newDate.getMonth() + increment);
     setSelectedDate(newDate);
   };
-
+  const changeYear = (year: number) => {
+    const newDate = new Date(selectedDate || new Date());
+    newDate.setFullYear(year);
+    setSelectedDate(newDate);
+    setShowYearPopup(false);
+  };
   const month_names = [
     "January",
     "February",
@@ -130,6 +134,36 @@ const DatePicker: React.FC<DatePickerProps> = ({ onSelectDate }) => {
     return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
   };
 
+  const generateYearOptions = () => {
+    const years = [];
+    const currentYear = new Date().getFullYear(); // Récupérer l'année actuelle
+    
+    for (let i = currentYear; i >= 1900; i--) {
+      years.push(
+        <div
+          key={i}
+          className={`year-option ${selectedDate?.getFullYear() === i ? "selected-day" : ""}`}
+          onClick={() => changeYear(i)}
+        >
+          {i}
+        </div>
+      );
+    }
+    
+    for (let i = currentYear + 1; i <= 2099; i++) {
+      years.push(
+        <div
+          key={i}
+          className={`year-option ${selectedDate?.getFullYear() === i ? "selected-day" : ""}`}
+          onClick={() => changeYear(i)}
+        >
+          {i}
+        </div>
+      );
+    }
+    return years;
+  };
+  
   return (
     <div className="date-picker">
      <div className="custom-date">
@@ -142,21 +176,27 @@ const DatePicker: React.FC<DatePickerProps> = ({ onSelectDate }) => {
       <FaCalendar className="date-icon" onClick={() => setShowCalendar(!showCalendar)} />
       </div>
     </div>
-      {showCalendar && (
+     {showCalendar && (
         <div ref={calendarRef} className={`calendar ${showCalendar ? 'show' : ''}`}>
-
           <div className="calendar-header">
             <div className="months_years">
-            <span className="month-picker" id="month-picker">
-              {month_names[selectedDate?.getMonth() || 0]}
-            </span>
-              <span id="year">{selectedDate?.getFullYear() || new Date().getFullYear()}</span>
+              <span className="month-picker" id="month-picker">
+                {month_names[selectedDate?.getMonth() || 0]}
+              </span>
+              <span id="year">
+                {selectedDate?.getFullYear() || new Date().getFullYear()}
+                <MdExpandMore className="year-dropdown-icon" onClick={() => setShowYearPopup(!showYearPopup)} />
+              </span>
+              {showYearPopup && (
+                <div className="year-popup">
+                  {generateYearOptions()}
+                </div>
+              )}
             </div>
-           <div className="icon-calendar-header">
-           <MdKeyboardArrowLeft className="month-change" id="prev-month" onClick={() => changeMonth(-1)} />
-            <MdKeyboardArrowRight className="month-change" id="next-month" onClick={() => changeMonth(1)} />
-           </div>
-           
+            <div className="icon-calendar-header">
+              <MdKeyboardArrowLeft className="month-change" id="prev-month" onClick={() => changeMonth(-1)} />
+              <MdKeyboardArrowRight className="month-change" id="next-month" onClick={() => changeMonth(1)} />
+            </div>
           </div>
           <div className="calendar-body">
             <div className="calendar-week-day">

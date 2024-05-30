@@ -10,6 +10,12 @@ The package can be installed via [npm](https://github.com/npm/cli):
 npm i library-date-react
 ```
 
+Or via [yarn](https://github.com/yarnpkg/yarn):
+
+```
+yarn add library-date-react
+```
+
 Below is a simple example of how to use the Datepicker in a React view.
 
 ```js
@@ -42,3 +48,31 @@ You can use `onSelectDate` event handler which fires each time some calendar dat
 />
 ```
 
+## Live Demo Examples
+
+To see demo examples, run the following command :
+
+
+```
+npm run storybook
+```
+
+Or via [yarn](https://github.com/yarnpkg/yarn):
+
+```
+yarn storybook
+```
+
+## Running Tests
+
+To run tests, run the following command :
+
+```
+npm run test
+```
+
+Or via [yarn](https://github.com/yarnpkg/yarn):
+
+```
+yarn test
+```
